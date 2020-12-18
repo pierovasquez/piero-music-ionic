@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
 
 
   loginUser() {
-
+    console.log(this.form.value);
   }
 
   get emailField() {
