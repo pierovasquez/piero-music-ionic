@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController } from '@ionic/angular';
+import { AuthenticateService } from '../services/authenticate.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,11 @@ export class LoginPage implements OnInit {
       { type: 'minlength', message: 'Password must have at least 4 characters' }
     ]
   };
-  constructor(private formBuilder: FormBuilder) {
+  errorMessage = '';
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthenticateService,
+    private navCtrl: NavController) {
     this.buildForm();
   }
 
@@ -35,6 +41,12 @@ export class LoginPage implements OnInit {
 
 
   loginUser() {
+    if (this.form.valid) {
+      this.authService.loginUser(this.form.value).then(res => {
+        this.errorMessage = '';
+        this.navCtrl.navigateForward('/home');
+      });
+    }
     console.log(this.form.value);
   }
 
