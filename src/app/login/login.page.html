@@ -7,5 +7,23 @@
       <ion-label>Email</ion-label>
       <ion-input formControlName="email"></ion-input>
     </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validationMessages.email">
+        <div *ngIf="emailField.hasError(validation.type) && emailField.dirty">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validationMessages.password">
+        <div *ngIf="passwordField.hasError(validation.type) && passwordField.dirty">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
   </form>
 </ion-content>
