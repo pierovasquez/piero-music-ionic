@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 import { AuthenticateService } from '../services/authenticate.service';
 
 @Component({
@@ -25,7 +26,9 @@ export class LoginPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthenticateService,
-    private navCtrl: NavController) {
+    private navCtrl: NavController,
+    private storage: Storage
+    ) {
     this.buildForm();
   }
 
@@ -44,10 +47,19 @@ export class LoginPage implements OnInit {
     if (this.form.valid) {
       this.authService.loginUser(this.form.value).then(res => {
         this.errorMessage = '';
-        this.navCtrl.navigateForward('/home');
+        this.storage.set('isUserLoggedIn', true);
+        this.navCtrl.navigateForward('/menu');
+      }).catch(res => {
+        this.errorMessage = res;
       });
     }
     console.log(this.form.value);
+  }
+
+  // Events
+
+  onRegisterClick() {
+    this.navCtrl.navigateForward('/register');
   }
 
   get emailField() {
