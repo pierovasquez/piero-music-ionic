@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="onGoToLogin()">Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <figure class="ion-text-center ion-padding">
+    <img src="assets/img/logo.png">
+  </figure>
+  <form [formGroup]="form" (ngSubmit)="registerUser()">
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validationMessages.name">
+        <div *ngIf="nameField.hasError(validation.type) && (nameField.dirty || nameField.touched)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label>Surname</ion-label>
+      <ion-input formControlName="surname"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validationMessages.surname">
+        <div *ngIf="surnameField.hasError(validation.type) && (surnameField.dirty || surnameField.touched)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validationMessages.email">
+        <div *ngIf="emailField.hasError(validation.type) && (emailField.dirty || emailField.touched)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validationMessages.password">
+        <div *ngIf="passwordField.hasError(validation.type) && (passwordField.dirty || passwordField.touched)">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+    <ion-button type="submit" expand="full" shape="round" color="success" [disabled]="!form.valid">Register</ion-button>
+  </form>
+</ion-content>
