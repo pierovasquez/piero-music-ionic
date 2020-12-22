@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { combineLatest } from 'rxjs';
 import { MusicService } from '../services/music.service';
 
 
@@ -16,7 +17,7 @@ export class HomePage {
     speed: 400
   };
 
-  artists = [{}, {}, {}, {}, {}];
+  artists: any[] = [];
   songs: any[] = [];
   albums: any[] = [];
 
@@ -27,10 +28,14 @@ export class HomePage {
   ionViewDidEnter() {
     this.musicService.getNewReleases().subscribe(newReleases => {
       console.log('relesaes', newReleases);
-      this.artists = newReleases.albums.items;
+      this.artists = this.musicService.getArtists();
+      console.log('artists', this.artists);
       this.songs = newReleases.albums.items.filter(e => e.album_type === 'single');
       this.albums = newReleases.albums.items.filter(e => e.album_type === 'album');
     });
   }
 
+  showSongs(artist) {
+    console.log('artist', artist);
+  }
 }
