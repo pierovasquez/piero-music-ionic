@@ -53,7 +53,6 @@ export class LoginPage implements OnInit {
         this.errorMessage = res;
       });
     }
-    console.log(this.form.value);
   }
 
   // Events

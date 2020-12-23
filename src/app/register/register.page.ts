@@ -47,7 +47,6 @@ export class RegisterPage implements OnInit {
   }
 
   registerUser() {
-    console.log('registerData', this.form.value);
     if (this.form.valid) {
       this.authService.registerUser(this.form.value).then(res => {
         console.log('res', res);
