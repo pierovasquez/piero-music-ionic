@@ -26,6 +26,10 @@ const routes: Routes = [
     redirectTo: 'menu',
     pathMatch: 'full'
   },
+  {
+    path: 'songs-modal',
+    loadChildren: () => import('./songs-modal/songs-modal.module').then( m => m.SongsModalPageModule)
+  },
 ];
 
 @NgModule({
