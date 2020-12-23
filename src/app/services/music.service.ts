@@ -13,6 +13,10 @@ export class MusicService {
     return dataArtists.items;
   }
 
+  getArtistTopTracks(artistId): Promise<any> {
+    return this.http.get(`https://platzi-music-api.herokuapp.com/artists/${artistId}/top-tracks?country=ES`).toPromise();
+  }
+
   getNewReleases(): Observable<any> {
     return this.http.get('https://platzi-music-api.herokuapp.com/browse/new-releases')
   }
