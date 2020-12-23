@@ -17,6 +17,10 @@ export class MusicService {
     return this.http.get(`https://platzi-music-api.herokuapp.com/artists/${artistId}/top-tracks?country=ES`).toPromise();
   }
 
+  getAlbumTracks(albumId): Promise<any> {
+    return this.http.get(`https://platzi-music-api.herokuapp.com/albums/${albumId}/tracks?country=ES`).toPromise();
+  }
+
   getNewReleases(): Observable<any> {
     return this.http.get('https://platzi-music-api.herokuapp.com/browse/new-releases')
   }
