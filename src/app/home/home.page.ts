@@ -23,6 +23,7 @@ export class HomePage {
   albums: any[] = [];
   song = {} as any;
   newTime;
+  currentTime;
   currentSong: HTMLAudioElement = {} as HTMLAudioElement;
   constructor(
     private musicService: MusicService,
@@ -38,31 +39,56 @@ export class HomePage {
   }
 
   async showSongs(artist) {
+    const title = `${artist.name} - Top Tracks`;
     const songs = await this.musicService.getArtistTopTracks(artist.id);
-    const modal = await this.modalController.create({
+    const modal = await this.createSongsModalController(songs.tracks, title);
+    this.onDidDismiss(modal);
+    return await modal.present();
+  }
+
+  async showSongsOfAlbum(album) {
+    const songs = await this.musicService.getAlbumTracks(album.id);
+    const title = `${album.name} - Top Tracks`;
+    const modal = await this.createSongsModalController(songs.items, title);
+    this.onDidDismiss(modal);
+    return await modal.present();
+  }
+
+  private createSongsModalController(songs, title) {
+    return this.modalController.create({
       component: SongsModalPage,
       componentProps: {
-        songs: songs.tracks,
-        artist: artist.name
+        songs,
+        title
       }
     });
+  }
+
+  private onDidDismiss(modal) {
     modal.onDidDismiss().then(dataReturned => {
-      console.log('dataReturned', dataReturned);
       if (dataReturned && dataReturned.data) {
         this.song = dataReturned.data;
+        if (this.song.preview_url) {
+          this.play();
+        }
       }
     });
-    return await modal.present();
   }
 
   play() {
     // There we are using the native API of the browser so we can handle songs and audio
     this.currentSong = new Audio(this.song.preview_url);
     this.currentSong.play();
-    this.currentSong.addEventListener('timeupdate', () => {
+    this.song.playing = true;
+    this.currentSong.addEventListener('timeupdate', (ev) => {
+      this.currentTime = this.currentSong.currentTime;
       this.newTime = (this.currentSong.currentTime / this.currentSong.duration);
     });
-    this.song.playing = true;
+    this.currentSong.onended = (event) => {
+      this.currentTime = '0.00';
+      this.newTime = 0;
+      this.song.playing = false;
+    };
   }
 
   pause() {

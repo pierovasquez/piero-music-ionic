@@ -27,7 +27,7 @@
   </ion-slides>
   <h1>Albums</h1>
   <ion-slides [options]="slideOps" *ngIf="albums.length">
-    <ion-slide *ngFor="let album of albums">
+    <ion-slide *ngFor="let album of albums" (click)="showSongsOfAlbum(album)">
       <ion-avatar class="square-avatar">
         <img [src]="album.images[0].url"/>
         <span>{{album.name}}</span>
@@ -38,7 +38,7 @@
 <ion-footer>
   <ion-grid>
     <ion-row>
-      <ion-col class="ion-text-start">{{parseTime(currentSong.currentTime)}}</ion-col>
+      <ion-col class="ion-text-start">{{parseTime(currentTime)}}</ion-col>
       <ion-col class="ion-text-end">{{parseTime(currentSong.duration) || 00}}</ion-col>
     </ion-row>
   </ion-grid>
