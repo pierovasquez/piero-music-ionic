@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{artist + ' - Top Tracks'}}</ion-title>
+    <ion-title>{{title}}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="selectSong()">Close</ion-button>
     </ion-buttons>
@@ -15,7 +15,7 @@
       </ion-avatar>
       <ion-label>
         <h2>{{song.name}}</h2>
-        <p>{{ song.popularity}}</p>
+        <p>{{ song.popularity ||song.disc_number}}</p>
       </ion-label>
 
     </ion-item>
