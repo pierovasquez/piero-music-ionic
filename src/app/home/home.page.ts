@@ -69,17 +69,15 @@ export class HomePage {
       if (dataReturned && dataReturned.data) {
         this.song = dataReturned.data;
         if (this.song.preview_url) {
+          this.loadCurrentSongAndEventListeners();
           this.play();
         }
       }
     });
   }
 
-  play() {
-    // There we are using the native API of the browser so we can handle songs and audio
+  private loadCurrentSongAndEventListeners() {
     this.currentSong = new Audio(this.song.preview_url);
-    this.currentSong.play();
-    this.song.playing = true;
     this.currentSong.addEventListener('timeupdate', (ev) => {
       this.currentTime = this.currentSong.currentTime;
       this.newTime = (this.currentSong.currentTime / this.currentSong.duration);
@@ -89,6 +87,13 @@ export class HomePage {
       this.newTime = 0;
       this.song.playing = false;
     };
+  }
+
+  play() {
+    // There we are using the native API of the browser so we can handle songs and audio
+    this.currentSong.play();
+    this.song.playing = true;
+    
   }
 
   pause() {
