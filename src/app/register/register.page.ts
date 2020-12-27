@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
@@ -8,7 +8,7 @@ import { AuthenticateService } from '../services/authenticate.service';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage {
   form: FormGroup;
   validationMessages = {
     email: [
@@ -32,9 +32,6 @@ export class RegisterPage implements OnInit {
     private navCtrl: NavController
   ) {
     this.buildForm();
-  }
-
-  ngOnInit() {
   }
 
   private buildForm() {

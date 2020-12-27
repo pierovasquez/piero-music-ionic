@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
@@ -11,18 +11,22 @@ interface Slide {
   imageAlt: string;
 }
 
-@Component({
-  selector: 'app-intro',
-  templateUrl: './intro.page.html',
-  styleUrls: ['./intro.page.scss'],
-})
-export class IntroPage implements OnInit {
-  slideOps = {
+function initSlideOps() {
+  return {
     initialSlide: 0,
     slidesPerView: 1,
     centeredSlides: true,
     speed: 400
   };
+}
+
+@Component({
+  selector: 'app-intro',
+  templateUrl: './intro.page.html',
+  styleUrls: ['./intro.page.scss'],
+})
+export class IntroPage {
+  slideOps = initSlideOps();
 
   slides: Slide[] = [
     {
@@ -54,9 +58,6 @@ export class IntroPage implements OnInit {
     private router: Router,
     private storage: Storage
   ) { }
-
-  ngOnInit() {
-  }
 
   finish() {
     this.storage.set('isIntroShowed', true);

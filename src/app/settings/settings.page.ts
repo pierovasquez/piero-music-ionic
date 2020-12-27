@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 @Component({
@@ -6,16 +6,13 @@ import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
 })
-export class SettingsPage implements OnInit {
+export class SettingsPage {
   // SafeResourceUrl to avoid any kind of software to manipulate the url of the photos.
   photo: SafeResourceUrl;
 
   constructor(
     private sanitizer: DomSanitizer
   ) { }
-
-  ngOnInit() {
-  }
 
   async takePhoto() {
     // DataUrl is the most common used because it allows easily to set url into a src of an image.

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
@@ -9,7 +9,7 @@ import { AuthenticateService } from '../services/authenticate.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage{
 
   form: FormGroup;
   validationMessages = {
@@ -30,9 +30,6 @@ export class LoginPage implements OnInit {
     private storage: Storage
     ) {
     this.buildForm();
-  }
-
-  ngOnInit() {
   }
 
   private buildForm() {
