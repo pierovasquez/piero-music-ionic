@@ -3,7 +3,20 @@ import { ModalController } from '@ionic/angular';
 import { MusicService } from '../services/music.service';
 import { SongsModalPage } from '../songs-modal/songs-modal.page';
 
+interface Song {
+  preview_url: string;
+  playing: boolean;
+  name: string;
+}
 
+function initSlideOps() {
+  return {
+    initialSlide: 2,
+    slidesPerView: 4,
+    centeredSlides: true,
+    speed: 400
+  };
+}
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,19 +24,21 @@ import { SongsModalPage } from '../songs-modal/songs-modal.page';
 })
 export class HomePage {
 
-  slideOps = {
-    initialSlide: 2,
-    slidesPerView: 4,
-    centeredSlides: true,
-    speed: 400
-  };
+  slideOps = initSlideOps();
 
   artists: any[] = [];
   songs: any[] = [];
   albums: any[] = [];
-  song = {} as any;
+
+  song: Song = {
+    preview_url: '',
+    playing: false,
+    name: ''
+  };
+  // Time to show on the player
   newTime;
   currentTime;
+
   currentSong: HTMLAudioElement = {} as HTMLAudioElement;
   constructor(
     private musicService: MusicService,
@@ -93,7 +108,7 @@ export class HomePage {
     // There we are using the native API of the browser so we can handle songs and audio
     this.currentSong.play();
     this.song.playing = true;
-    
+
   }
 
   pause() {
@@ -101,7 +116,7 @@ export class HomePage {
     this.song.playing = false;
   }
 
-  parseTime(time = '0.00') {
+  parseTime(time: number) {
     if (time) {
       const partTime = parseInt(time.toString().split('.')[0], 10);
       let minutes = Math.floor(partTime / 60).toString();
