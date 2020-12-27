@@ -21,9 +21,13 @@ export class SongsModalPage {
     this.title = this.navParams.data.title;
   }
 
-  async selectSong(song) {
-    // This send the song to the component who called the SongsModal
-    await this.modalControler.dismiss(song);
+  async selectSong(song?) {
+    if (song) {
+      // This send the song to the component who called the SongsModal
+      await this.modalControler.dismiss(song);
+    } else {
+      await this.modalControler.dismiss();
+    }
   }
 
 }
