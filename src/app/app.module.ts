@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { SongsModalPageModule } from './songs-modal/songs-modal.module';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,10 @@ import { SongsModalPageModule } from './songs-modal/songs-modal.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot(),
-    SongsModalPageModule
+    SongsModalPageModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey: environment.mapsKeyApi
+    // })
   ],
   providers: [
     StatusBar,
