@@ -22,6 +22,10 @@ export class MusicService {
   }
 
   getNewReleases(): Observable<any> {
-    return this.http.get('https://platzi-music-api.herokuapp.com/browse/new-releases')
+    return this.http.get('https://platzi-music-api.herokuapp.com/browse/new-releases');
   }
+
+  searchTracks(keywords): Observable<any> {
+    return this.http.get<any>(`https://platzi-music-api.herokuapp.com/search?q=${keywords}&type=track`);
+}
 }
