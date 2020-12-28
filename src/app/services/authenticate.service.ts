@@ -15,7 +15,7 @@ export class AuthenticateService {
       const registeredUser = await this.storage.get('user');
       if (credentials.email === 'test@test.com' && credentials.password === '12345') {
         accept('Login correcto');
-      } else if (credentials.email === registeredUser.email && credentials.password === atob(registeredUser.password)) {
+      } else if (registeredUser && credentials.email === registeredUser.email && credentials.password === atob(registeredUser.password)) {
         accept('Login correct');
       } else {
         reject('Login incorrecto');
