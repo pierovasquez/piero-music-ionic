@@ -1,11 +1,11 @@
 <ion-content>
   <figure class="ion-text-center ion-padding">
-    <img src="assets/img/logo.png">
+    <img src="assets/img/logo.png" alt="Piero Music">
   </figure>
   <form [formGroup]="form" (ngSubmit)="loginUser()">
     <ion-item>
-      <ion-label>Email</ion-label>
-      <ion-input formControlName="email"></ion-input>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input placeholder="Enter your email" type="text" autocomplete formControlName="email"></ion-input>
     </ion-item>
     <div class="validation-error">
       <ng-container *ngFor="let validation of validationMessages.email">
@@ -15,8 +15,11 @@
       </ng-container>
     </div>
     <ion-item>
-      <ion-label>Password</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input [type]="showPassword ? 'text' : 'password'" placeholder="Enter your password" formControlName="password"></ion-input>
+      <ion-button slot="end" fill="clear" size="default" class="ion-align-self-end" (click)="showPasswordToggle()">
+        <ion-icon [name]="showPassword ? 'eye-off': 'eye'"></ion-icon>
+      </ion-button>
     </ion-item>
     <div class="validation-error">
       <ng-container *ngFor="let validation of validationMessages.password">
@@ -25,18 +28,25 @@
         </div>
       </ng-container>
     </div>
-    {{ errorMessage }}
-    <ion-button type="submit" expand="full" shape="round" color="success" [disabled]="!form.valid">Login</ion-button>
+    <span class="validation-error">{{ errorMessage }}</span>
+    <ion-button 
+      expand="full"
+      shape="round"
+      color="success"
+      type="submit"
+      [disabled]="form.invalid">Log in</ion-button>
   </form>
 </ion-content>
-<ion-footer class="ion-text-center">
-  <ion-button
-    (click)="onRegisterClick()"
-    expand="full" 
-    shape="round" 
-    fill="outline" 
-    color="success"
-  >
+  <!-- <ion-button (click)="onRegisterClick()" expand="full" shape="round" fill="outline" color="success">
     Click to register
-  </ion-button>
-</ion-footer>
+  </ion-button> -->
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="login">
+        <ion-icon name="log-in"></ion-icon>
+        <ion-label>Log In</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="onRegisterClick()" tab="register">
+        <ion-icon name="person-add"></ion-icon>
+        <ion-label>Register</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>

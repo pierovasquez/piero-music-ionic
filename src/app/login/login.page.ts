@@ -23,6 +23,7 @@ export class LoginPage{
     ]
   };
   errorMessage = '';
+  showPassword = false;
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthenticateService,
@@ -50,6 +51,10 @@ export class LoginPage{
         this.errorMessage = res;
       });
     }
+  }
+
+  showPasswordToggle() {
+    this.showPassword = !this.showPassword;
   }
 
   // Events
