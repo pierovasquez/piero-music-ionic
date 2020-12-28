@@ -9,6 +9,7 @@ interface Slide {
   icon: string;
   imageSrc: string;
   imageAlt: string;
+  backgroundImage: string;
 }
 
 function initSlideOps() {
@@ -30,28 +31,31 @@ export class IntroPage {
 
   slides: Slide[] = [
     {
-      title: 'Escucha tu música',
-      subTitle: 'EN CUALQUIER LUGAR',
-      description: 'Los mejores álbumes, las mejores canciones. Escucha y comparte cualquier momento, a todas horas.',
+      title: 'Play your music',
+      subTitle: 'ANYWHERE YOU WANT',
+      description: 'The best albums, the best songs. Listen and share at any time, at all hours.',
       icon: 'play',
       imageSrc: 'assets/img/logo.png',
-      imageAlt: 'Piero Music Logo'
+      imageAlt: 'Piero Music Logo',
+      backgroundImage: 'assets/img/microphone-640.jpg'
     },
     {
-      title: 'Disfruta de nuestro reproductor',
-      subTitle: 'DE VIDEOS INCREIBLES',
-      description: 'Los mejores álbumes, las mejores canciones. Escucha y comparte cualquier momento, a todas horas.',
+      title: 'Enjoy our player',
+      subTitle: 'OF INCREDIBLE VIDEOS',
+      description: 'Enter the video mode of our player and get access to clips, documentaries and making incredible offs of your favorite artist.',
       icon: 'videocam',
       imageSrc: 'assets/img/logo.png',
-      imageAlt: 'Piero Music Logo'
+      imageAlt: 'Piero Music Logo',
+      backgroundImage: 'assets/img/concert1.jpg'
     },
     {
-      title: 'Accede al exclusivo',
-      subTitle: 'MODO DEPORTE',
-      description: 'Los mejores álbumes, las mejores canciones. Escucha y comparte cualquier momento, a todas horas.',
-      icon: 'play',
+      title: 'Access the exclusive',
+      subTitle: 'SPORTS MODE',
+      description: 'Create a playlist based on your physical activity. Have reports and access to what you need, integrated with GPS!',
+      icon: 'bicycle',
       imageSrc: 'assets/img/logo.png',
-      imageAlt: 'Piero Music Logo'
+      imageAlt: 'Piero Music Logo',
+      backgroundImage: 'assets/img/vinyl-records.jpg'
     }
   ];
   constructor(

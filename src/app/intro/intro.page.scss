@@ -7,24 +7,29 @@ ion-slides {
   height: 100%;
   max-width: 800px;
 }
+
+ion-slide {
+  background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 .swiper-slide {
   display: block;
   margin-bottom: 64px;
   background-color: white;
 }
-ion-slide > h1,
-h2 {
-  margin: 0 0 0 0;
-  color: var(--ion-color-primary);
+ion-slide > h1, h2 {
+  margin: 95px 0 0 0;
+  color: var(--ion-color-primary-contrast);
 }
 ion-slide > p {
-  color: black;
+  color: var(--ion-color-primary-contrast);
   font-style: italic;
   font-size: 22px;
   padding: 1em 1em 1em 1em;
 }
 ion-slide > ion-icon {
-  color: var(--ion-color-success);
+  color: var(--ion-color-primary-contrast);
   font-size: 48px;
 }
 ion-slide > ion-icon[name="close"] {
