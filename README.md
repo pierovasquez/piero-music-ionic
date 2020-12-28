@@ -37,7 +37,7 @@ You should be able to see the project running in the following urls: [http://loc
 ## Contact Me
 - [Email](mailto:piero.vasquez.r@gmail.com)
 - [LinkedIn](https://www.linkedin.com/in/piero-vasquez/)
-- [GitHub Public Repositories](https://github.com/pierovasquez?tab=repositories/)
+- [GitHub Public Repositories](https://github.com/pierovasquez?tab=repositories)
 
 ## References
 
