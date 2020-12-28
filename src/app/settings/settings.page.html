@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-title>Settings</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -10,7 +10,7 @@
 <ion-content class="ion-text-center">
   <div class="success-background" padding>
     <ion-avatar (click)="takePhoto()">
-      <ion-icon *ngIf="!photo" name="person-outline"></ion-icon>
+      <img *ngIf="!photo" src="../../assets/img/logo.png">
       <img *ngIf="photo" [src]="photo">
     </ion-avatar>
     <h1>Piero Vasquez</h1>
