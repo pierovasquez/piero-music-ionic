@@ -10,7 +10,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule),
+    canActivate: [IntroGuard]
   },
   {
     path: 'register',
@@ -19,7 +20,11 @@ const routes: Routes = [
   {
     path: 'menu',
     loadChildren: () => import('./menu/menu.module').then(m => m.MenuPageModule),
-    canActivate: [IntroGuard, LoginGuard]
+    canActivate: [LoginGuard, IntroGuard]
+  },
+  {
+    path: 'songs-modal',
+    loadChildren: () => import('./songs-modal/songs-modal.module').then( m => m.SongsModalPageModule)
   },
   {
     path: '',
@@ -27,9 +32,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'songs-modal',
-    loadChildren: () => import('./songs-modal/songs-modal.module').then( m => m.SongsModalPageModule)
-  },
+    path: '**',
+    redirectTo: 'intro',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
