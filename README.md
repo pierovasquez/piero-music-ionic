@@ -2,7 +2,7 @@
 
 This music player for mobiles was developed from scratch based on [Angular](https://angular.io). Angular features were used to build an application in less time, using components,
 modules, routes and types. [Ionic components](ionicframework.com/docs/components) was also used to design the elements of this application. I also used the open-source 
-JavaScript library for mobile-friendly interactive maps called Leaflet which does not require an api-key.
+JavaScript library for mobile-friendly interactive maps called [Leaflet](https://leafletjs.com/) which does not require an api-key.
 
 ## Deploy
 
@@ -10,7 +10,7 @@ JavaScript library for mobile-friendly interactive maps called Leaflet which doe
 
 Cloning this Repository from GitHub is simple. You will need the following to launch the application:
 
-- [Node.js and npm] (https://nodejs.org/en/) version 10.3.0 or later
+- [Node.js and npm](https://nodejs.org/en/) version 10.3.0 or later
 - [git](https://git-scm.com/downloads)
 - [Angular CLI](https://cli.angular.io) version 10.0.8
 - [Ionic CLI](https://ionicframework.com/docs/installation/cli) version 5.4.16 or later
