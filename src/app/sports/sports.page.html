@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>sports</ion-title>
+    <ion-title>Sports</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -9,5 +9,33 @@
 
 <ion-content>
   <!-- <agm-map></agm-map> -->
-  <div id="mapId" style="width: 100%; height: 100%;"></div>
+  <div id="mapId" style="width: 100%; height: 300px;"></div>
+  <div>
+
+    <ion-searchbar (ionCancel)="onCancelOrClear()" (ionClear)="onCancelOrClear()" (keyup)="getTracks($event.target.value)"></ion-searchbar>
+    <div class="ion-text-center" *ngIf="isSearching">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+    <div class="ion-text-center" *ngIf="(!songs || songs.length === 0) && !isSearching && nameSearch">
+      <h3>There are no songs for {{nameSearch}}.</h3>
+    </div>
+
+    <ion-virtual-scroll [items]="songs" *ngIf="songs">
+      <ion-item *virtualItem="let song">
+        {{song.name}}
+        <ion-buttons slot="end">
+          <ion-button (click)="pause()" *ngIf="song.isPlaying">
+            <ion-icon name="pause"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="song.isPlaying">
+            <ion-spinner name="dots"></ion-spinner>
+          </ion-button>
+          <ion-button (click)="play(song)" *ngIf="!song.isPlaying">
+            <ion-icon name="play"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-virtual-scroll>
+
+  </div>
 </ion-content>

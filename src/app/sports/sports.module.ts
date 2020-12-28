@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { SportsPageRoutingModule } from './sports-routing.module';
 
 import { SportsPage } from './sports.page';
+import { MusicService } from '../services/music.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -14,8 +16,10 @@ import { SportsPage } from './sports.page';
     FormsModule,
     IonicModule,
     SportsPageRoutingModule,
-    // AgmCoreModule    
+    HttpClientModule
+    // AgmCoreModule
   ],
-  declarations: [SportsPage]
+  declarations: [SportsPage],
+  providers: [MusicService]
 })
-export class SportsPageModule {}
+export class SportsPageModule { }
